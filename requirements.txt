@@ -9,4 +9,14 @@ tqdm
 matplotlib
 tensorflow 
 ultralytics
-jiwer 
+PIL
+jiwer
+transformers
+qwen_vl_utils
+accelerate>=0.26.0
+PEFT
+bitsandbytes
+torch
+re
+unicodedata
+ipywidgets
