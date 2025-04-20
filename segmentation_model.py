@@ -7,8 +7,17 @@ import matplotlib.pyplot as plt
 
 tf_savedmodel_model = YOLO("best.pt",task='detect')
 
-def segment_page(image, image_id=None):
+def segment_page(image_input, image_id=None):
     print("Starting image processing...")
+    
+    # Check if input is a list (PDF) or single image
+    if isinstance(image_input, list):
+        # Process the first page if it's a list
+        image = image_input[0]
+        print(f"Processing first page of PDF with {len(image_input)} pages")
+    else:
+        # Use the input directly if it's a single image
+        image = image_input
 
     # Create a copy of the original image to apply the mask
     processed_image = image.copy()
@@ -109,4 +118,4 @@ def segment_page(image, image_id=None):
     print("Processing complete.")
 
     # Return the images dictionary
-    return processed_image,images_dict
+    return processed_image, images_dict
