@@ -1,28 +1,33 @@
-opencv-python
-numpy
-scikit-image
-imutils
-argparse
-scikit-image
-tqdm
-# glob
-matplotlib
-tensorflow 
-ultralytics
-PIL
-jiwer
-transformers
-qwen_vl_utils
+# Core ML/AI Libraries
+torch>=2.0.0
+transformers>=4.30.0
 accelerate>=0.26.0
-PEFT
+peft
 bitsandbytes
-torch
-re
-unicodedata
-ipywidgets
-pyarabic
-re
-pdf2image
-os
-tempfile
 
+# Computer Vision
+opencv-python
+scikit-image
+ultralytics
+pillow  # PIL package name
+
+# OCR and Text Processing
+jiwer
+qwen_vl_utils
+pyarabic
+
+# Scientific Computing
+numpy
+matplotlib
+
+# PDF Processing
+pdf2image
+
+# Utilities
+tqdm
+imutils
+ipywidgets
+
+# Development (optional - uncomment if needed)
+# jupyter
+# notebook
