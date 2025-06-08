@@ -1,1 +1,9 @@
 *.png
+*.json
+*.pdf
+*.pt
+creating_ground_truth.ipynb
+grad-ocr.ipnyb.ipynb
+extract_ground_truth_from_pdf.ipynb
+test_OCR_2025.pdf
+ArabicOCRCorrection.ipynb

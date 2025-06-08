@@ -20,3 +20,9 @@ torch
 re
 unicodedata
 ipywidgets
+pyarabic
+re
+pdf2image
+os
+tempfile
+

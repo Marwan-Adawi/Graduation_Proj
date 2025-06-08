@@ -51,6 +51,14 @@ This will install all the required libraries, including:
 - transformers (for NLP models)
 - ultralytics (for YOLO object detection)
 - and other dependencies
+## Poppler install
+MacOS
+brew install poppler
+Linux
+sudo apt-get install poppler-utils
+Windows
+Download and install Poppler from the official website: https://poppler.freedesktop.org/
+
 
 ### 4. Fix Common Installation Issues
 
@@ -90,3 +98,5 @@ del offloading.
 - **MPS Issues**: On Apple Silicon Macs, ensure you have the latest version of PyTorch that supports MPS acceleration.
 
 For more detailed information, refer to the documentation of each library or open an issue in the project repository.
+
+
