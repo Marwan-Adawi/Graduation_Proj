@@ -7,3 +7,5 @@ grad-ocr.ipnyb.ipynb
 extract_ground_truth_from_pdf.ipynb
 test_OCR_2025.pdf
 ArabicOCRCorrection.ipynb
+cache
+Qari-OCR-0.3-SNAPSHOT-VL-2B-Instruct-merged
