@@ -117,7 +117,7 @@ class ArabicOCR:
     def _process_single_image(self, 
                             image_input: Union[np.ndarray, Image.Image], 
                             max_size: int = 1024,
-                            max_new_tokens: int = 2500) -> str:
+                            max_new_tokens= 2500):
         """
         Process a single image for OCR.
         
@@ -218,7 +218,7 @@ class ArabicOCR:
                     return self._process_single_image(
                         image_input, 
                         max_size=512, 
-                        max_new_tokens=1000
+                        max_new_tokens=2500
                     )
                 except Exception:
                     return "[Error: Could not process image due to memory constraints]"
