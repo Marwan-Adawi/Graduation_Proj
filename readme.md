@@ -7,6 +7,7 @@ This guide will walk you through the process of setting up the Arabic OCR Correc
 - Python 3.9 or higher
 - pip (Python package installer)
 - Git (optional, for cloning the repository)
+- Poppler (required for PDF processing)
 
 ## Installation Steps
 
@@ -15,8 +16,7 @@ This guide will walk you through the process of setting up the Arabic OCR Correc
 If you haven't already downloaded the project:
 
 ```bash
-git https://github.com/Marwan-Adawi/Graduation_Proj.git
-
+git clone https://github.com/Marwan-Adawi/Graduation_Proj.git
 ```
 
 ### 2. Create a Virtual Environment (Recommended)
@@ -43,24 +43,31 @@ pip install -r requirements.txt
 ```
 
 This will install all the required libraries, including:
-- opencv-python (for image processing)
+- torch and transformers (for deep learning models)
+- opencv-python and scikit-image (for image processing)
+- pdf2image (for PDF processing)
 - numpy (for numerical operations)
-- scikit-image (for image processing)
-- tensorflow (for machine learning)
-- torch (for deep learning)
-- transformers (for NLP models)
-- ultralytics (for YOLO object detection)
+- ultralytics (for object detection)
 - and other dependencies
-## Poppler install
-MacOS
+
+### 4. Install Poppler
+
+Poppler is required for PDF processing:
+
+**MacOS**
+```bash
 brew install poppler
-Linux
+```
+
+**Linux**
+```bash
 sudo apt-get install poppler-utils
-Windows
+```
+
+**Windows**
 Download and install Poppler from the official website: https://poppler.freedesktop.org/
 
-
-### 4. Fix Common Installation Issues
+### 5. Fix Common Installation Issues
 
 If you encounter warnings about urllib3 or ipywidgets:
 
@@ -72,31 +79,32 @@ pip install ipywidgets --upgrade
 pip install urllib3==1.26.15
 ```
 
-### 5. Verify Installation
+## Using the OCR Script
 
-To verify that all dependencies are correctly installed:
-
-```bash
-python -c "import torch; import transformers; import tensorflow as tf; print('Installation successful!')"
-```
-
-## Running the Notebooks
-
-After installation, you can run the Jupyter notebooks:
+The system includes a command-line script for processing PDF files with Arabic OCR:
 
 ```bash
-jupyter notebook
+python ocr_script.py --input your_file.pdf --output results.txt --transform --verbose
 ```
 
-Navigate to `ArabicOCRCorrection.ipynb` or `OCR.ipynb` to start working with the system.
+### Command Line Arguments
+
+- `--input`, `-i`: Input PDF file path (default: test_OCR_2025.pdf)
+- `--output`, `-o`: Output file path (auto-generated if not specified)
+- `--transform`, `-t`: Apply scan transformation to images before OCR
+- `--format`: Output format (txt or json, default: txt)
+- `--verbose`, `-v`: Enable detailed progress output
+
+## System Components
+
+- **ocr_script.py**: Main script for processing PDFs with Arabic OCR
+- **ocr_functions.py**: Utility functions for PDF processing and image transformation
+- **Qariv03.py**: Arabic OCR implementation using deep learning models
 
 ## Troubleshooting
 
-- **Memory Issues**: If you encounter memory errors when loading models, try using a smaller model or enabling mo
-del offloading.
+- **Memory Issues**: If you encounter memory errors when loading models, try using a smaller model or enabling model offloading.
 - **CUDA Errors**: If using NVIDIA GPUs and encountering CUDA errors, ensure you have compatible CUDA drivers installed.
 - **MPS Issues**: On Apple Silicon Macs, ensure you have the latest version of PyTorch that supports MPS acceleration.
 
 For more detailed information, refer to the documentation of each library or open an issue in the project repository.
-
-
