@@ -117,7 +117,7 @@ class ArabicOCR:
     def _process_single_image(self, 
                             image_input: Union[np.ndarray, Image.Image], 
                             max_size: int = 1024,
-                            max_new_tokens= 2500):
+                            max_new_tokens= 3000):
         """
         Process a single image for OCR.
         
@@ -184,12 +184,16 @@ class ArabicOCR:
             # Generate
             with torch.no_grad():
                 generated_ids = self.model.generate(
-                    **inputs, 
-                    max_new_tokens=max_new_tokens,
-                    do_sample=False,
+                    **inputs,
+                    temperature=0.001,        # Even more deterministic
+                    do_sample=False,         # Keep greedy for accuracy
+                    max_new_tokens=1500,     # Reduced from 2000
+                    repetition_penalty=1.2,  # Increased from 1.3
+                    length_penalty=0.9,      # Favor shorter outputs
+
+                    early_stopping=True,     # Stop at natural end
                     pad_token_id=self.processor.tokenizer.eos_token_id
                 )
-            
             # Decode output
             generated_ids_trimmed = [
                 out_ids[len(in_ids):] for in_ids, out_ids in zip(inputs["input_ids"], generated_ids)
